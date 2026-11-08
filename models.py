@@ -44,7 +44,7 @@ from langchain.chat_models import init_chat_model
 
 # ═══ Alternative Models (comment out default above, uncomment one below) ═════
 # model = init_chat_model("anthropic:claude-sonnet-5-5")
-model = init_chat_model("openai:gpt-6-luna")
+# model = init_chat_model("openai:gpt-6-luna")
 strong_model = init_chat_model("openai:gpt-6.1-sol")
 
 # ═══ Open-Source / Alternative Hosted Models ══════════════════════════════════
@@ -75,8 +75,10 @@ strong_model = init_chat_model("openai:gpt-6.1-sol")
 # Free models available; sign up at openrouter.ai and get an API key
 # Requires OPENROUTER_API_KEY in .env
 #
-# from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
+# !!! this model is provided for free by NVIDIA !!!
 # model = ChatOpenAI(model="nvidia/nemotron-3-ultra-550b-a55b:free", base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
+model = ChatOpenAI(model="openrouter/free", base_url="https://openrouter.ai/api/v1", api_key=os.environ["OPENROUTER_API_KEY"])
 
 
 # ═══ Cloud Provider Models (extra install required, see table above) ═════════

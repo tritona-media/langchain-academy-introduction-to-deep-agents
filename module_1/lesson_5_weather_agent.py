@@ -27,7 +27,7 @@ class CoordinatesNotFoundError(LookupError):
     pass
 
 def get_geo_location(location: str) -> dict:
-    """Gets the geographical coordinates (latitude and longitude) for a given 
+    """Get the geographical coordinates (latitude and longitude) for a given 
     location.
     
     Args:
@@ -54,7 +54,7 @@ def get_geo_location(location: str) -> dict:
 
 @tool
 def get_current_temperature(location: str) -> str:
-    """Gets the current temperature for the given location.
+    """Get the current temperature for the given location.
     
     Args:
         location: name of the location for which to retrieve the current 

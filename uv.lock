@@ -2002,6 +2002,7 @@ dependencies = [
     { name = "nh3" },
     { name = "python-dotenv" },
     { name = "questionary" },
+    { name = "resend" },
     { name = "tavily-python" },
 ]
 
@@ -2044,6 +2045,7 @@ requires-dist = [
     { name = "nh3" },
     { name = "python-dotenv" },
     { name = "questionary", specifier = ">=2.0.0" },
+    { name = "resend", specifier = ">=2.53.0" },
     { name = "tavily-python" },
 ]
 provides-extras = ["azure", "bedrock", "google"]
@@ -3340,6 +3342,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/f3/61/d7545dafb7ac2230c70d38d31cbfe4cc64f7144dc41f6e4e4b78ecd9f5bb/requests-toolbelt-1.0.0.tar.gz", hash = "sha256:7681a0a3d047012b5bdc0ee37d7f8f07ebe76ab08caeccfc3921ce23c88d5bc6", size = 206888, upload-time = "2023-05-01T04:11:33.229Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3f/51/d4db610ef29373b879047326cbf6fa98b6c1969d6f6dc423279de2b1be2c/requests_toolbelt-1.0.0-py2.py3-none-any.whl", hash = "sha256:cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06", size = 54481, upload-time = "2023-05-01T04:11:28.427Z" },
+]
+
+[[package]]
+name = "resend"
+version = "2.53.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/08/57/90a75fd66faed17a6467ce5dcc50e8620e3f11a7a365f3581c5e38275ab5/resend-2.53.0.tar.gz", hash = "sha256:376d860115abf9eb6ef33d556c3a64f122d6cd8ec7347ac80f4b567d6e813829", size = 86342, upload-time = "2026-11-09T19:14:26.434Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9d/cd/e5fded706143a09c319794ed96e988e790852e8e5122809e3829f3d9cecd/resend-2.53.0-py3-none-any.whl", hash = "sha256:2f04d71a1feaf1e553df74dd8b876591d61a35530e0631aa46d6ce5c4fa8710f", size = 126439, upload-time = "2026-11-09T19:14:25.131Z" },
 ]
 
 [[package]]

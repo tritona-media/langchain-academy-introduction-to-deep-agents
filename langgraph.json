@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "my_agent": "./module_1/lesson_7_time_travel_agent.py:agent"
+  },
+  "env": ".env"
+}

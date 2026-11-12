@@ -11,36 +11,40 @@ agent = create_deep_agent(
     checkpointer=MemorySaver()
 )
 
-agent.invoke({
-    "messages": [{"role": "user", "content": "My name is John."}]
-}, config=config)
+def main():
+    agent.invoke({
+        "messages": [{"role": "user", "content": "My name is John."}]
+    }, config=config)
 
-agent.invoke({
-    "messages": [{"role": "user", "content": "I am 30 years old."}]
-}, config=config)
+    agent.invoke({
+        "messages": [{"role": "user", "content": "I am 30 years old."}]
+    }, config=config)
 
-agent.invoke({
-    "messages": [{"role": "user", "content": "I live in London."}]
-}, config=config)
+    agent.invoke({
+        "messages": [{"role": "user", "content": "I live in London."}]
+    }, config=config)
 
-snapshots = list(agent.get_state_history(config))
+    snapshots = list(agent.get_state_history(config))
 
-turns = [s for s in snapshots if s.next == ()]
+    turns = [s for s in snapshots if s.next == ()]
 
-result = agent.invoke({
-    "messages": [{"role": "user", "content": "Who am I and how old am I?"}]
-}, config=turns[1].config)
+    result = agent.invoke({
+        "messages": [{"role": "user", "content": "Who am I and how old am I?"}]
+    }, config=turns[1].config)
 
-print(result["messages"][-1].text)
+    print(result["messages"][-1].text)
 
-result = agent.invoke({
-    "messages": [{"role": "user", "content": "Where do I live?"}]
-}, config=turns[1].config)
+    result = agent.invoke({
+        "messages": [{"role": "user", "content": "Where do I live?"}]
+    }, config=turns[1].config)
 
-print(result["messages"][-1].text)
+    print(result["messages"][-1].text)
 
-result = agent.invoke({
-    "messages": [{"role": "user", "content": "Where do I live?"}]
-}, config=turns[0].config)
+    result = agent.invoke({
+        "messages": [{"role": "user", "content": "Where do I live?"}]
+    }, config=turns[0].config)
 
-print(result["messages"][-1].text)
+    print(result["messages"][-1].text)
+
+if __name__ == "__main__":
+    main()

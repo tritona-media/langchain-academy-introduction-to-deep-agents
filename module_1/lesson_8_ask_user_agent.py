@@ -96,7 +96,7 @@ def main():
                 else:
                     decisions.append({
                         "type": "reject",
-                        "message": "User rej    ected this email draft."
+                        "message": "User rejected this email draft."
                     })
         result = agent.invoke(
             Command(resume={"decisions": decisions}),

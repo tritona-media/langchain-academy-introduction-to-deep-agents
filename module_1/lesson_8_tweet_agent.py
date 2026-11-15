@@ -3,6 +3,7 @@ from models import model
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_core.tools import tool
 from langchain_core.runnables import RunnableConfig
+from langgraph.types import Command
 import questionary
 
 config = RunnableConfig({"configurable": {"thread_id": "thread_1"}})
@@ -19,7 +20,7 @@ def post_tweet(title: str, text: str) -> str:
 agent = create_deep_agent(
     name="Tweet Agent",
     model=model,
-    system_prompt="",
+    system_prompt=SYSTEM_PRMOPT,
     tools=[post_tweet],
     interrupt_on={"post_tweet": {"allowed_decisions": ["approve", "edit", "reject"]}},
     checkpointer=MemorySaver()
@@ -53,4 +54,17 @@ def main():
                         "edited_action": {"name": req["name"], "args": edited_args}
                     })
                 else:
-                    decisions.append({"type": "reject"})
+                    decisions.append({
+                        "type": "reject",
+                        "message": "Posting tweet has been rejected by user."
+                    })
+        result = agent.invoke(
+            Command(resume={"decisions": decisions}),
+            config=config,
+            version="v2"
+        )
+
+    print(result.value["messages"][-1].text)
+
+if __name__ == "__main__":
+    main()

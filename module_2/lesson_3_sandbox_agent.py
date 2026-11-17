@@ -34,5 +34,4 @@ try:
 
     print(result["messages"][-1].text)
 finally:
-    print()
-    #client.delete_sandbox(ls_sandbox.name)
+    client.delete_sandbox(ls_sandbox.name)

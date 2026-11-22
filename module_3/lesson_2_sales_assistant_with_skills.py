@@ -1,0 +1,32 @@
+from deepagents import create_deep_agent
+from deepagents.backends.filesystem import FilesystemBackend
+from pathlib import Path
+from models import model
+
+root_dir = Path(__file__).parent
+backend = FilesystemBackend(root_dir=str(root_dir), virtual_mode=True)
+
+agent = create_deep_agent(
+    name="Sales Agent with Skills",
+    model=model,
+    backend=backend,
+    skills=["/skills"],
+    system_prompt="You are a sales assistant."
+)
+
+result = agent.invoke({
+    "messages": [
+        {
+            "role": "user",
+            "content": (
+                "Qualify this lead: Acme Corp, 200-person logistics company. I "
+                "spoke with Sarah Chen, VP of Sales: she's the decision maker. "
+                "They have $45k budgeted for CRM this year. Main pain: deals "
+                "are slipping through the cracks due to poor pipeline "
+                "visibility. They want a solution live by end of Q3."
+            )
+        }
+    ]
+})
+
+print(result["messages"][-1].text)
